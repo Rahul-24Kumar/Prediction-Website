@@ -1,8 +1,8 @@
-// components/Navbar.js
+'use client';
 export default function Navbar() {
     return (
       <nav className="flex items-center justify-between bg-gray-800 px-6 py-4">
-        <div className="text-white font-bold text-lg">Polymarket</div>
+        <div className="text-white font-bold text-lg" onClick={() => window.location.href = "/"}> Polymarket</div>
         <div className="hidden md:flex items-center space-x-6">
           <a href="#" className="text-gray-300 hover:text-white">Markets</a>
           <a href="#" className="text-gray-300 hover:text-white">Election</a>
