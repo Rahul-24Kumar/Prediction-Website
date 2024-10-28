@@ -18,6 +18,125 @@ const markets = [
     chance: 64,
     volume: "$1.6m",
   },
+  {
+    title: "Presidential Election Winner 2024",
+    participants: ["Donald Trump", "Kamala Harris"],
+    chance: 60,
+    volume: "$2.1b",
+  },
+  {
+    title: "Popular Vote Winner 2024",
+    participants: ["Kamala Harris", "Donald Trump"],
+    chance: 68,
+    volume: "$417.5m",
+  },
+  {
+    title: "Will Trump go on Joe Rogan?",
+    chance: 64,
+    volume: "$1.6m",
+  },
+  {
+    title: "Presidential Election Winner 2024",
+    participants: ["Donald Trump", "Kamala Harris"],
+    chance: 60,
+    volume: "$2.1b",
+  },
+  {
+    title: "Popular Vote Winner 2024",
+    participants: ["Kamala Harris", "Donald Trump"],
+    chance: 68,
+    volume: "$417.5m",
+  },
+  {
+    title: "Will Trump go on Joe Rogan?",
+    chance: 64,
+    volume: "$1.6m",
+  },
+  {
+    title: "Presidential Election Winner 2024",
+    participants: ["Donald Trump", "Kamala Harris"],
+    chance: 60,
+    volume: "$2.1b",
+  },
+  {
+    title: "Popular Vote Winner 2024",
+    participants: ["Kamala Harris", "Donald Trump"],
+    chance: 68,
+    volume: "$417.5m",
+  },
+  {
+    title: "Will Trump go on Joe Rogan?",
+    chance: 64,
+    volume: "$1.6m",
+  },
+  {
+    title: "Presidential Election Winner 2024",
+    participants: ["Donald Trump", "Kamala Harris"],
+    chance: 60,
+    volume: "$2.1b",
+  },
+  {
+    title: "Popular Vote Winner 2024",
+    participants: ["Kamala Harris", "Donald Trump"],
+    chance: 68,
+    volume: "$417.5m",
+  },
+  {
+    title: "Will Trump go on Joe Rogan?",
+    chance: 64,
+    volume: "$1.6m",
+  },
+  {
+    title: "Presidential Election Winner 2024",
+    participants: ["Donald Trump", "Kamala Harris"],
+    chance: 60,
+    volume: "$2.1b",
+  },
+  {
+    title: "Popular Vote Winner 2024",
+    participants: ["Kamala Harris", "Donald Trump"],
+    chance: 68,
+    volume: "$417.5m",
+  },
+  {
+    title: "Will Trump go on Joe Rogan?",
+    chance: 64,
+    volume: "$1.6m",
+  },
+  {
+    title: "Presidential Election Winner 2024",
+    participants: ["Donald Trump", "Kamala Harris"],
+    chance: 60,
+    volume: "$2.1b",
+  },
+  {
+    title: "Popular Vote Winner 2024",
+    participants: ["Kamala Harris", "Donald Trump"],
+    chance: 68,
+    volume: "$417.5m",
+  },
+  {
+    title: "Will Trump go on Joe Rogan?",
+    chance: 64,
+    volume: "$1.6m",
+  },
+  {
+    title: "Presidential Election Winner 2024",
+    participants: ["Donald Trump", "Kamala Harris"],
+    chance: 60,
+    volume: "$2.1b",
+  },
+  {
+    title: "Popular Vote Winner 2024",
+    participants: ["Kamala Harris", "Donald Trump"],
+    chance: 68,
+    volume: "$417.5m",
+  },
+  {
+    title: "Will Trump go on Joe Rogan?",
+    chance: 64,
+    volume: "$1.6m",
+  },
 ];
 
 import { useRouter } from 'next/navigation';
