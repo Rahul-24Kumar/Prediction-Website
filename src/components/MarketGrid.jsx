@@ -391,15 +391,20 @@ export default function MarketGrid() {
         {allMarkets.slice(0, visibleItems).map((market, index) => (
           <div
             key={index}
-            className="p-4 bg-gray-800 rounded-md text-white shadow-lg cursor-pointer"
+            className="p-4 bg-gray-800 rounded-md text-white shadow-lg cursor-pointer 
+                       transition transform hover:scale-105 hover:bg-gray-700 hover:shadow-2xl"
             onClick={() => handleCardClick(market.title)}
           >
             <h3 className="text-lg font-bold">{market.title}</h3>
             <p className="mt-2">Chance: {market.chance}%</p>
             <p className="text-sm text-gray-400">Volume: {market.volume}</p>
             <div className="mt-4 flex justify-between">
-              <button className="px-4 py-2 bg-green-500 rounded-md">Buy</button>
-              <button className="px-4 py-2 bg-red-500 rounded-md">Sell</button>
+              <button className="px-4 py-2 bg-green-500 rounded-md hover:bg-green-400">
+                Buy
+              </button>
+              <button className="px-4 py-2 bg-red-500 rounded-md hover:bg-red-400">
+                Sell
+              </button>
             </div>
           </div>
         ))}
@@ -409,7 +414,7 @@ export default function MarketGrid() {
       {visibleItems < markets.length && (
         <div className="mt-6 flex justify-center">
           <button
-            className="px-6 py-2 bg-blue-500 text-white rounded-md"
+            className="px-6 py-2 bg-blue-500 text-white rounded-md hover:bg-blue-400"
             onClick={handleShowMore}
           >
             Show More
