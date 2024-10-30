@@ -1,5 +1,5 @@
 'use client';
-import { useState } from 'react'; // Import useState for state management
+import { useState } from 'react';
 import { notFound } from 'next/navigation';
 import { Line } from 'react-chartjs-2';
 import {
@@ -13,17 +13,13 @@ import {
   CategoryScale,
 } from 'chart.js';
 
-// Register Chart.js components
 ChartJS.register(LineElement, PointElement, LinearScale, Title, Tooltip, Legend, CategoryScale);
 
 export default function MarketDetail({ params }) {
   const { title } = params;
 
-  if (!title) {
-    notFound(); // Handle case where title is missing
-  }
+  if (!title) notFound(); // Handle missing title
 
-  // Participants Data
   const participants = {
     'Donald Trump': {
       name: 'Donald Trump',
@@ -40,11 +36,11 @@ export default function MarketDetail({ params }) {
   };
 
   const [selectedParticipant, setSelectedParticipant] = useState('Donald Trump');
-  const [isBuy, setIsBuy] = useState(true); // Track Buy/Sell state
-  const [shares, setShares] = useState(0); // Track the number of shares
+  const [isBuy, setIsBuy] = useState(true);
+  const [shares, setShares] = useState(0);
 
   const handleSharesChange = (increment) => {
-    setShares((prev) => Math.max(0, prev + increment)); // Prevent negative shares
+    setShares((prev) => Math.max(0, prev + increment));
   };
 
   const handleInputChange = (e) => {
@@ -52,7 +48,6 @@ export default function MarketDetail({ params }) {
     if (!isNaN(value) && value >= 0) setShares(value);
   };
 
-  // Chart Data
   const data = {
     labels: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct'],
     datasets: [
@@ -62,7 +57,6 @@ export default function MarketDetail({ params }) {
         borderColor: 'rgb(255, 99, 132)',
         backgroundColor: 'rgba(255, 99, 132, 0.5)',
         tension: 0.4,
-        fill: false,
         pointRadius: 4,
       },
       {
@@ -71,24 +65,17 @@ export default function MarketDetail({ params }) {
         borderColor: 'rgb(54, 162, 235)',
         backgroundColor: 'rgba(54, 162, 235, 0.5)',
         tension: 0.4,
-        fill: false,
         pointRadius: 4,
       },
     ],
   };
 
-  // Chart Options
   const options = {
     responsive: true,
     plugins: {
-      legend: {
-        position: 'top',
-        labels: { color: 'white' },
-      },
+      legend: { position: 'top', labels: { color: 'white' } },
       tooltip: {
-        callbacks: {
-          label: (context) => `${context.dataset.label}: ${context.raw}%`,
-        },
+        callbacks: { label: (context) => `${context.dataset.label}: ${context.raw}%` },
       },
     },
     scales: {
@@ -104,32 +91,30 @@ export default function MarketDetail({ params }) {
   };
 
   return (
-    <div className="min-h-screen bg-gray-900 text-white p-8">
-      <div className="max-w-7xl mx-auto grid grid-cols-3 gap-8">
-        {/* Left Side: Chart */}
-        <div className="col-span-2">
-          <h1 className="text-4xl font-extrabold mb-4 text-center">
+    <div className="min-h-screen bg-gray-900 text-white p-4 sm:p-8">
+      <div className="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-3 gap-6">
+        {/* Chart Section */}
+        <div className="lg:col-span-2">
+          <h1 className="text-3xl sm:text-4xl font-extrabold mb-4 text-center">
             {decodeURIComponent(title)}
           </h1>
-          <p className="text-center text-gray-400 font-bold mb-6">
+          <p className="text-center text-gray-400 font-bold mb-4">
             Explore market insights and predictions about the 2024 Presidential Election.
           </p>
 
-          {/* Chart Section */}
-          <div className="bg-gray-700 rounded-md p-6 mb-8">
+          <div className="bg-gray-700 rounded-md p-4 sm:p-6 mb-6">
             <Line data={data} options={options} />
           </div>
 
-          {/* Participants List */}
           <div className="space-y-4">
             {Object.keys(participants).map((participant) => (
               <div
                 key={participant}
-                className={`flex justify-between items-center bg-gray-700 p-4 rounded-md cursor-pointer ${selectedParticipant === participant ? 'bg-yellow-200 text-gray-900' : ''
-                  }`}
+                className={`flex justify-between items-center bg-gray-700 p-4 rounded-md cursor-pointer ${
+                  selectedParticipant === participant ? 'bg-yellow-200 text-gray-900' : ''
+                }`}
                 onClick={() => setSelectedParticipant(participant)}
               >
-
                 <p className="font-semibold flex items-center space-x-3">
                   <img
                     src="https://via.placeholder.com/50"
@@ -138,17 +123,14 @@ export default function MarketDetail({ params }) {
                   />
                   <span>{participants[participant].name}</span>
                 </p>
-                <span className="text-lg font-bold">
-                  {participants[participant].percentage}%
-                </span>
-
+                <span className="text-lg font-bold">{participants[participant].percentage}%</span>
               </div>
             ))}
           </div>
         </div>
 
-        {/* Right Side: Sidebar Card */}
-        <div className="bg-gray-800 rounded-xl p-6">
+        {/* Sidebar Section */}
+        <div className="bg-gray-800 rounded-xl p-4 sm:p-6">
           <div className="flex items-center mb-4">
             <img
               src="https://via.placeholder.com/50"
@@ -158,46 +140,46 @@ export default function MarketDetail({ params }) {
             <h2 className="text-xl font-bold">{selectedParticipant}</h2>
           </div>
 
-          {/* Buy/Sell Toggle */}
           <div className="flex justify-around mb-4">
             <button
-              className={`w-full py-2 ${isBuy ? 'text-blue-500 border-b-2 border-blue-500' : 'text-gray-400'}`}
+              className={`w-full py-2 ${
+                isBuy ? 'text-blue-500 border-b-2 border-blue-500' : 'text-gray-400'
+              }`}
               onClick={() => setIsBuy(true)}
             >
               Buy
             </button>
             <button
-              className={`w-full py-2 ${!isBuy ? 'text-blue-500 border-b-2 border-blue-500' : 'text-gray-400'}`}
+              className={`w-full py-2 ${
+                !isBuy ? 'text-blue-500 border-b-2 border-blue-500' : 'text-gray-400'
+              }`}
               onClick={() => setIsBuy(false)}
             >
               Sell
             </button>
           </div>
 
-          {/* Outcome Section */}
           <div className="flex justify-around mb-6">
             <button
-              className={`flex-1 py-3 mr-2 rounded-md ${isBuy ? 'bg-green-600 text-white' : 'bg-gray-600 text-gray-400'
-                }`}
+              className={`flex-1 py-3 mr-2 rounded-md ${
+                isBuy ? 'bg-green-600 text-white' : 'bg-gray-600 text-gray-400'
+              }`}
             >
               Yes {participants[selectedParticipant].yesPrice}¢
             </button>
             <button
-              className={`flex-1 py-3 ml-2 rounded-md ${!isBuy ? 'bg-red-600 text-white' : 'bg-gray-600 text-gray-400'
-                }`}
+              className={`flex-1 py-3 ml-2 rounded-md ${
+                !isBuy ? 'bg-red-600 text-white' : 'bg-gray-600 text-gray-400'
+              }`}
             >
               No {participants[selectedParticipant].noPrice}¢
             </button>
           </div>
 
-          {/* Shares Input Section */}
           <div className="mb-6">
             <label className="block mb-2 text-sm">Shares</label>
             <div className="flex items-center">
-              <button
-                className="bg-gray-700 p-2 rounded-l-md"
-                onClick={() => handleSharesChange(-1)}
-              >
+              <button className="bg-gray-700 p-2 rounded-l-md" onClick={() => handleSharesChange(-1)}>
                 -
               </button>
               <input
@@ -206,21 +188,16 @@ export default function MarketDetail({ params }) {
                 onChange={handleInputChange}
                 className="w-full text-center p-2 bg-gray-900 border-0 outline-none text-white"
               />
-              <button
-                className="bg-gray-700 p-2 rounded-r-md"
-                onClick={() => handleSharesChange(1)}
-              >
+              <button className="bg-gray-700 p-2 rounded-r-md" onClick={() => handleSharesChange(1)}>
                 +
               </button>
             </div>
           </div>
 
-          {/* Login Button */}
           <button className="w-full bg-blue-500 py-3 rounded-md text-white font-bold mb-4">
             Log In
           </button>
 
-          {/* Price Summary */}
           <div className="text-sm">
             <p className="flex justify-between">
               <span>Avg price</span> <span>0.0¢</span>
